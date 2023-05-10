@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% if customer.user.is_superuser %}
+       <h2>This is {{ customer.user.first_name }} {{ customer.user.last_name }} <span>(Superuser)</span></h2>
+    {% else %}
+        <h2>This is {{ customer.user.first_name }} {{ customer.user.last_name }}</h2>
+    {% endif %}
+    <div>
+        <h4>Birthday</h4>
+        <p>{{ customer.birthday }}</p>
+    </div>
+
+    <div>
+        <h4>Email</h4>
+        <p>{{ customer.user.email }}</p>
+    </div>
+
+    <div>
+        <h4>Current Balance</h4>
+        <p>{{ customer.current_balance }}</p>
+    </div>
+    
+{% endblock %}

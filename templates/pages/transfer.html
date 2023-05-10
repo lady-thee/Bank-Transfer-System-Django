@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h2>Transfer page</h2>
+    <span>{{ increment }}</span>
+    <div>
+        <h3>Select customer to transfer to</h3>
+        <form action="{% url 'transfer' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="options">Select user</label>
+                <select name="select" id="" multiple>
+                    <option value="-">~</option>
+                    {% for customer in customers %}
+                        <option value="{{ customer.id }}">{{ customer.user.first_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label for="amount">Amount</label>
+                <input type="number" placeholder="0.00" name="amount" multiple>
+            </div>
+
+            <div>
+                <button>transfer</button>
+            </div>
+
+        </form>
+    </div>
+
+
+{% endblock %}
