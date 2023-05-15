@@ -11,7 +11,6 @@ def loadCustomersPage(request):
     return render(request, 'pages/customers.html', context)
 
 
-
 def loadCustomerPage(request, pk):
     customer = Customers.objects.get(id=pk)
     context = {

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'customers.apps.CustomersConfig',
     'transfer.apps.TransferConfig',
+
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +87,7 @@ DATABASES = {
     
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bankingsys_db',
+        'NAME': 'bank_sys_db',
         'USER': 'postgres',
         'HOST': 'localhost',
         'PASSWORD': '2030',
@@ -93,6 +95,8 @@ DATABASES = {
     }
 }
 
+
+AUTH_USER_MODEL = 'customers.Users'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -129,6 +133,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = [
+    BASE_DIR / 'static/'
+]
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
