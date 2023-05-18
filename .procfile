@@ -1,1 +1,2 @@
-web: gunicorn 'name-of-application.wsgi'
+web: gunicorn 'Bank-Transfer-System-Django.wsgi'
+gunicorn main:app
